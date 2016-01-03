@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Photon Sample</title>
+
+    <link rel="stylesheet" href="./css/photon.css">
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const reload = document.getElementById('js-reload');
+        reload.addEventListener('click', () => { location.reload(); });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="window">
+      <header class="toolbar toolbar-header">
+        <h1 class="title">Photon Sample</h1>
+        <div class="toolbar-actions">
+          <button id="js-reload" class="btn btn-default">
+            <span class="icon icon-arrows-ccw icon-text"></span>
+            Reload
+          </button> 
+        </div>
+      </header>
+      <div class="window-content">
+        <div class="pane-group">
+          <div class="pane-sm sidebar">sidebar pane</div>
+          <div class="pane">main pane</div>
+        </div>
+      </div>
+      <footer class="toolbar toolbar-footer">
+        <h1 class="title">Footer</h1>
+      </footer>
+    </div>
+  </body>
+</html>

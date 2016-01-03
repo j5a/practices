@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Webview sample</title>
+
+    <link rel="stylesheet" href="./css/photon.css">
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const webview = document.getElementById("github");
+
+        const reload = document.getElementById('js-reload');
+        reload.addEventListener('click', () => { webview.reload(); });
+
+        const back = document.getElementById('js-back');
+        back.addEventListener('click', () => { webview.goBack(); });
+
+        const forward = document.getElementById('js-forward');
+        forward.addEventListener('click', () => { webview.goForward(); });
+
+        const favList = document.getElementById('fav-list');
+        const favoriteButton = document.getElementById('js-favorite');
+        favoriteButton.addEventListener('click', () => {
+          const listItem = document.createElement('li');
+          listItem.classList.add('list-group-item');
+          const p = document.createElement('p');
+          p.textContent = webview.getURL();
+          listItem.appendChild(p);
+          listItem.addEventListener('click', function() {
+            const url = this.querySelector('p').textContent;
+            webview.setAttribute('src', url);
+          });
+          favList.appendChild(listItem);
+        });
+
+        const urlbar = document.getElementById('urlbar');
+        urlbar.addEventListener('keypress', (e) => {
+          if (e.keyIdentifier === 'Enter') {
+            webview.setAttribute('src', urlbar.value);
+          }
+        });
+      });
+    </script>
+
+    <style>
+      #mainpain { height: 100%; }
+    </style>
+
+  </head>
+  <body>
+    <div class="window">
+      <header class="toolbar toolbar-header">
+        <div class="toolbar-actions">
+          <button id="js-back" class="btn btn-default">
+            <span class="icon icon-left icon-text"></span>
+            Back
+          </button>
+
+          <button id="js-forward" class="btn btn-default">
+            <span class="icon icon-right icon-text"></span>
+            Forward
+          </button>
+
+          <button id="js-reload" class="btn btn-default">
+            <span class="icon icon-arrows-ccw icon-text"></span>
+            Reload
+          </button>
+
+          <button id="js-favorite" class="btn btn-default">
+            <span class="icon icon-star icon-text"></span>
+            Favorite
+          </button>
+          <input type="text" id="urlbar" class="form-control" placeholder="URL" value="https://github.com">
+        </div>
+      </header>
+      <div class="window-content">
+        <div class="pane-group">
+          <div class="pane-sm sidebar" id="sidebar">
+            <ul id="fav-list" class="list-group">
+            </ul>
+          </div>
+          <div class="pane" id="mainpain">
+            <webview id="github" src="https://www.github.com/" autosize="on" minwidth="576" minheight="432"></webview>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

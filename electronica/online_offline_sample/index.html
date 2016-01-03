@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Online Offline Sample</title>
+
+    <link rel="stylesheet" href="./css/photon.css">
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const status = document.getElementById('status');
+        var updateOnlineStatus = () => {
+          status.textContent = navigator.onLine ? 'online' : 'offline';
+        };
+        window.addEventListener('online',  updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+      });
+    </script>
+  </head>
+  <body>
+    <div class="window">
+      <header class="toolbar toolbar-header">
+        <h1 class="title">Online Offline Sample</h1>
+      </header>
+      <div class="window-content">
+        content
+      </div>
+      <footer class="toolbar toolbar-footer">
+        <h1 class="title" id="status">
+          <script>document.write(navigator.onLine ? 'online' : 'offline');</script>
+        </h1>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello Electron!</title>
+
+    <script>
+      function done() {
+        const verify = require('electronica').verify;
+        verify();
+      }
+      document.addEventListener('DOMContentLoaded', () => {
+        const button = document.getElementById('button-verify');
+        button.addEventListener('click', done);
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Hello Electron!</h1>
+    node version <script>document.write(process.versions.node)</script><br>
+    Chrome Version <script>document.write(process.versions.chrome)</script><br>
+    Electron Version <script>document.write(process.versions.chrome)</script><br>
+
+    <button id='button-verify'>DONE</button>
+  </body>
+</html>

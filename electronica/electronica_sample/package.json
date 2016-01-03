@@ -1,0 +1,12 @@
+{
+  "name": "electronica_sample",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron index.js"
+  },
+  "dependencies": {
+    "electron-prebuilt": "^0.36.2",
+    "electronica": "^0.3.0"
+  }
+}
